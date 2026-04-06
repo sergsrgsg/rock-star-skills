@@ -1,0 +1,13 @@
+{
+  "name": "rock-star-skills",
+  "version": "0.1.0",
+  "description": "A collection of Claude Code skills for knowledge management, wiki building, and more.",
+  "author": {
+    "name": "Martin Večeřa",
+    "email": "marvenec@gmail.com",
+    "url": "https://github.com/mvecera"
+  },
+  "homepage": "https://github.com/marvec/rock-star-skills",
+  "repository": "https://github.com/marvec/rock-star-skills",
+  "license": "GPL-3.0"
+}

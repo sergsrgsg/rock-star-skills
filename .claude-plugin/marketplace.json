@@ -1,0 +1,36 @@
+{
+  "name": "rock-star-skills",
+  "owner": {
+    "name": "Martin Večeřa",
+    "email": "marvenec@gmail.com",
+    "url": "https://github.com/mvecera"
+  },
+  "plugins": [
+    {
+      "name": "rock-star-skills",
+      "source": "./",
+      "description": "A collection of Claude Code skills for knowledge management, wiki building, and more. Includes LLM Wiki — a pattern for building persistent, interlinked knowledge bases using LLMs.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Martin Večeřa",
+        "email": "marvenec@gmail.com"
+      },
+      "repository": "https://github.com/marvec/rock-star-skills",
+      "homepage": "https://github.com/marvec/rock-star-skills",
+      "license": "GPL-3.0",
+      "keywords": [
+        "llm-wiki",
+        "knowledge-base",
+        "knowledge-management",
+        "wiki",
+        "obsidian",
+        "markdown",
+        "skills",
+        "qmd"
+      ],
+      "skills": [
+        "./skills/"
+      ]
+    }
+  ]
+}

